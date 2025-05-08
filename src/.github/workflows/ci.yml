@@ -2,29 +2,33 @@ name: CI Процесс
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - develop
+      - release/*
   pull_request:
-    branches: [ main ]
+    branches:
+      - develop
+      - release/*
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Репозиторийг клон хийх
-        uses: actions/checkout@v3
+      - name: Кодыг татах
+        uses: actions/checkout@v4
 
-      - name: JDK суулгах
-        uses: actions/setup-java@v3
+      - name: JDK 17 Тохируулах
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Төслийг build хийж, test гүйцэтгэх
-        run: mvn clean verify
-
-      - name: Checkstyle шалгалт
+      - name: Checkstyle Шалгах
         run: mvn checkstyle:check
 
-      - name: Code Coverage шалгах (JaCoCo)
+      - name: JUnit Тест ба JaCoCo Coverage Шалгах
+        run: mvn test jacoco:check
+
+      - name: JaCoCo Тайлан Үүсгэх
         run: mvn jacoco:report
