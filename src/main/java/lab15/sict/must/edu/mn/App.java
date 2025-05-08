@@ -1,4 +1,4 @@
-package labxx.sict.must.edu.mn;
+package lab15.sict.must.edu.mn;
 
 /**
  * Hello world!
