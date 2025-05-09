@@ -3,12 +3,19 @@ name: CI Процесс
 on:
   push:
     branches:
+      - main
       - develop
       - release/*
+      - hotfix/*
+      - feature/*
   pull_request:
     branches:
+      - main
       - develop
       - release/*
+      - hotfix/*
+      - feature/*
+
 
 jobs:
   build-and-test:
