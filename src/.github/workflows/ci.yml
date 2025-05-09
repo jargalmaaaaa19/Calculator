@@ -32,3 +32,7 @@ jobs:
 
       - name: JaCoCo Тайлан Үүсгэх
         run: mvn jacoco:report
+
+
+#fjhjhfdjhfjdh
+
